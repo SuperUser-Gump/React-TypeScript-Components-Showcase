@@ -12,7 +12,12 @@ type AnchorProps = {
     href?: string;
   };
 
+function isAnchor(props: ButtonProps | AnchorProps): props is AnchorProps {
+  return 'href' in props;
+}
+
 export default function Button(props: ButtonProps | AnchorProps) {
+  if (isAnchor(props)) {
     return <a className="button" {...props}></a>;
   }
 
