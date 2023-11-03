@@ -1,6 +1,7 @@
-import { type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef, type FormEvent } from 'react';
 
-type FormProps = ComponentPropsWithoutRef<'form'>;
-export default function Form(props: FormProps) {
-  return <form {...props}>{props.children}</form>;
+type FormProps = ComponentPropsWithoutRef<'form'> & {
+  // eslint-disable-next-line no-unused-vars
+  onSave: (value: unknown) => void;
+};
 }
