@@ -8,7 +8,9 @@ type FormProps = ComponentPropsWithoutRef<'form'> & {
   // eslint-disable-next-line no-unused-vars
   onSave: (value: unknown) => void;
 };
-export default function Form({ onSave, children, ...otherProps }: FormProps) {
+const Form = forwardRef<FormHandle, FormProps>(function Form({ onSave, children, ...otherProps }, ref) {
+  const form = useRef<HTMLFormElement>(null);
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -18,8 +20,10 @@ export default function Form({ onSave, children, ...otherProps }: FormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} {...otherProps}>
+    <form onSubmit={handleSubmit} ref={form} {...otherProps}>
       {children}
     </form>
   );
-}
+});
+
+export default Form;
