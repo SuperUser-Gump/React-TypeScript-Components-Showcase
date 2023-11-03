@@ -11,6 +11,15 @@ type FormProps = ComponentPropsWithoutRef<'form'> & {
 const Form = forwardRef<FormHandle, FormProps>(function Form({ onSave, children, ...otherProps }, ref) {
   const form = useRef<HTMLFormElement>(null);
 
+  useImperativeHandle(ref, () => {
+    return {
+      clear() {
+        console.log('CLEARING');
+        form.current?.reset();
+      },
+    };
+  });
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
