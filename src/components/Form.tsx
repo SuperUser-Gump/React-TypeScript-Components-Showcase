@@ -1,4 +1,8 @@
-import { type ComponentPropsWithoutRef, type FormEvent } from 'react';
+import { type ComponentPropsWithoutRef, type FormEvent, forwardRef, useImperativeHandle, useRef } from 'react';
+
+export type FormHandle = {
+  clear: () => void;
+};
 
 type FormProps = ComponentPropsWithoutRef<'form'> & {
   // eslint-disable-next-line no-unused-vars
