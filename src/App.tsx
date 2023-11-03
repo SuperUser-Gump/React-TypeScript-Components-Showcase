@@ -14,7 +14,13 @@ function App() {
 
   return (
     <main>
-      <Input label="Test" id="test" ref={input} />
+      <Form onSave={handleSave} ref={customForm}>
+        <Input type="text" label="Name" id="name" name="name" />
+        <Input type="number" label="Age" id="age" />
+        <p>
+          <Button el="button">Save</Button>
+        </p>
+      </Form>
     </main>
   );
 }
